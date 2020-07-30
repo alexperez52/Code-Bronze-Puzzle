@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    guess: 0
+  }
+
+  componentDidMount() {
+    const guess = this.takeGuess();
+    this.setState({ guess: guess });
+  }
+
+  takeGuess() {
+
+    const num = Math.floor(Math.random() * 6) + 1;
+    console.log(num);
+    return num;
+  }
+
+
+  render() {
+
+    return (
+      <div>
+        {this.state.guess}
+      </div>
+    );
+  }
 }
 
 export default App;
