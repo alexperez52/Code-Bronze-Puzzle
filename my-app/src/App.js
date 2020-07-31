@@ -13,6 +13,8 @@ class App extends Component {
     turn: 0,
     possibilities: [BKnife, Fan, Mask, Revolver, Torch, WoodBlock],
     current: [],
+    correctNum: 0,
+    correctPos: 0
 
   }
 
@@ -41,7 +43,9 @@ class App extends Component {
   clear() {
     this.setState({ current: [] })
   }
+  checkAnswer(e) {
 
+  }
 
 
   render() {
@@ -49,23 +53,40 @@ class App extends Component {
     return (
       <div>
         <div>
-          Tap on image to guess
-        {this.state.possibilities.map((items, index) =>
-          <img src={items}
-            key={index}
-            onClick={() => this.play(index)}></img>
-        )}
+          <div>
+            Tap on image to guess
+          </div>
+          {this.state.possibilities.map((items, index) =>
+            <img src={items}
+              key={index}
+              onClick={() => this.play(index)}></img>
+          )}
         </div>
 
 
         <div>
-          Current guess
-        {this.state.current.map((items, index) =>
-          <img key={index} src={this.state.possibilities[items]}></img>
-        )}
+          <div>
+            Current guess
+          </div>
+
+          {this.state.current.map((items, index) =>
+            <img key={index} src={this.state.possibilities[items]}></img>
+          )}
         </div>
         <div>
           <button onClick={() => this.clear()}>clear</button>
+          <button onClick={() => this.checkAnswer(this.state.current)}>submit</button>
+        </div>
+
+        <div>
+          <div>
+            Correct Items:
+            {this.state.correctNum}
+          </div>
+          <div>
+            Correct position:
+            {this.state.correctPos}
+          </div>
         </div>
       </div>
     );
