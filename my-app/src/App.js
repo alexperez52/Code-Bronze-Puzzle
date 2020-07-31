@@ -11,7 +11,25 @@ class App extends Component {
 
   state = {
     turn: 0,
-    possibilities: [BKnife, Fan, Mask, Revolver, Torch, WoodBlock],
+    possibilities: [{
+      picture: BKnife,
+      name: "B-Knife"
+    }, {
+      picture: Fan,
+      name: "Fan"
+    }, {
+      picture: Mask,
+      name: "Mask"
+    }, {
+      picture: Revolver,
+      name: "Revolver"
+    }, {
+      picture: Torch,
+      name: "Torch Lamp"
+    }, {
+      picture: WoodBlock,
+      name: "Wood Block"
+    }],
     computer: [],
     current: [],
     correctNum: 0,
@@ -85,7 +103,7 @@ class App extends Component {
           </div>
 
           {this.state.current.map((items, index) =>
-            <img key={index} src={this.state.possibilities[items]}></img>
+            <img key={index} src={this.state.possibilities[items].picture}></img>
           )}
         </div>
         <div>
@@ -93,9 +111,16 @@ class App extends Component {
             Tap on image to guess
           </div>
           {this.state.possibilities.map((items, index) =>
-            <img src={items}
-              key={index}
-              onClick={() => this.play(index)}></img>
+            <div className="item-bar">
+              <div>
+                <img src={items.picture}
+                  key={index}
+                  onClick={() => this.play(index)}></img>
+              </div>
+              <text>
+                {items.name}
+              </text>
+            </div>
           )}
         </div>
 

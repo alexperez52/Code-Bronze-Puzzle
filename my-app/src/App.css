@@ -41,4 +41,11 @@
 .container-div {
   display: flex;
   justify-content: space-evenly;
+  background-color: #2e4158;
+  height: 100vh;
+}
+
+.item-bar {
+  float: left;
+  width: 5rem;
 }
