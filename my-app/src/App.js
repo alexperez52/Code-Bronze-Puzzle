@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.current);
     console.log(this.state.computer);
   }
 
@@ -36,7 +35,6 @@ class App extends Component {
     Filter possible results
     Choose the one that yields best results
   */
-    console.log(e);
     if (this.state.current.length < 3 && !this.state.current.includes(e)) {
       this.setState({ current: [...this.state.current, e] })
     }
@@ -45,15 +43,32 @@ class App extends Component {
   clear() {
     this.setState({ current: [] })
   }
-  checkAnswer(e) {
+  async checkAnswer(e) {
     const arr = [];
-    if (this.state.computer.length == 0) {
+    if (this.state.computer.length === 0) {
       while (arr.length < 3) {
         var r = Math.floor(Math.random() * 6);
         if (arr.indexOf(r) === -1) arr.push(r);
       }
-      this.setState({ computer: arr });
+      await this.setState({ computer: arr });
     }
+
+
+    const computer_comb = this.state.computer;
+    var cn = 0;
+    var cp = 0;
+    for (var i = 0; i < computer_comb.length; i++) {
+      if (computer_comb[i] === this.state.current[i]) {
+        cp = cp + 1;
+      }
+      if (computer_comb.includes(this.state.current[i])) {
+        cn = cn + 1;
+      }
+    }
+
+
+    this.setState({ correctNum: cn, correctPos: cp });
+
 
   }
 
@@ -61,7 +76,18 @@ class App extends Component {
   render() {
 
     return (
-      <div>
+      <div className="container-div">
+
+
+        <div>
+          <div>
+            Current guess
+          </div>
+
+          {this.state.current.map((items, index) =>
+            <img key={index} src={this.state.possibilities[items]}></img>
+          )}
+        </div>
         <div>
           <div>
             Tap on image to guess
@@ -74,15 +100,7 @@ class App extends Component {
         </div>
 
 
-        <div>
-          <div>
-            Current guess
-          </div>
 
-          {this.state.current.map((items, index) =>
-            <img key={index} src={this.state.possibilities[items]}></img>
-          )}
-        </div>
         <div>
           <button onClick={() => this.clear()}>clear</button>
           <button onClick={() => this.checkAnswer(this.state.current)}>submit</button>
