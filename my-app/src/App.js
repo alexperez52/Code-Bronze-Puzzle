@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     turn: 0,
     possibilities: [BKnife, Fan, Mask, Revolver, Torch, WoodBlock],
+    computer: [],
     current: [],
     correctNum: 0,
     correctPos: 0
@@ -24,6 +25,7 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log(this.state.current);
+    console.log(this.state.computer);
   }
 
 
@@ -44,6 +46,14 @@ class App extends Component {
     this.setState({ current: [] })
   }
   checkAnswer(e) {
+    const arr = [];
+    if (this.state.computer.length == 0) {
+      while (arr.length < 3) {
+        var r = Math.floor(Math.random() * 6);
+        if (arr.indexOf(r) === -1) arr.push(r);
+      }
+      this.setState({ computer: arr });
+    }
 
   }
 
