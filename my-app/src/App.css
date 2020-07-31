@@ -40,9 +40,9 @@
 
 .container-div {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: #2e4158;
-  height: 100vh;
+
 }
 
 .item-bar {

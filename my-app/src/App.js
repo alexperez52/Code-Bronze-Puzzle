@@ -33,7 +33,8 @@ class App extends Component {
     computer: [],
     current: [],
     correctNum: 0,
-    correctPos: 0
+    correctPos: 0,
+    guesses: []
 
   }
 
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.computer);
+    console.log(this.state.guesses);
   }
 
 
@@ -84,6 +85,14 @@ class App extends Component {
       }
     }
 
+    const past_guesses = {
+      pictures: this.state.current,
+      correct_num: cn,
+      correct_pos: cp
+    }
+    const arr2 = this.state.guesses;
+    arr2.push(past_guesses);
+    this.setState({ guesses: arr2 });
 
     this.setState({ correctNum: cn, correctPos: cp });
 
@@ -117,14 +126,12 @@ class App extends Component {
                   key={index}
                   onClick={() => this.play(index)}></img>
               </div>
-              <text>
+              <label>
                 {items.name}
-              </text>
+              </label >
             </div>
           )}
         </div>
-
-
 
         <div>
           <button onClick={() => this.clear()}>clear</button>
@@ -140,6 +147,21 @@ class App extends Component {
             Correct position:
             {this.state.correctPos}
           </div>
+        </div>
+
+        <div>
+          {this.state.guesses.map((items, index) =>
+            <div>
+              <div>
+                {items.correct_num}
+                {items.correct_pos}
+              </div>
+              <div>
+                {this.state.guesses[index].pictures.map((pics, index) =>
+                  <img src={this.state.possibilities[pics].picture}></img>)}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
