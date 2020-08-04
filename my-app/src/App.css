@@ -39,10 +39,18 @@
 }
 
 .container-div {
-  display: flex;
-  justify-content: space-around;
   background-color: #2e4158;
+  height: 100vh;
 
+}
+
+.top-container-div {
+  display: flex;
+  background-color: beige;
+}
+
+.bottom-container-div {
+  background-color: blueviolet;
 }
 
 .item-bar {

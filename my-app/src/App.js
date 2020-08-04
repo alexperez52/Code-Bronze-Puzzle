@@ -106,64 +106,73 @@ class App extends Component {
     return (
       <div className="container-div">
 
-
-        <div>
+        <div className="top-container-div">
           <div>
-            Current guess
-          </div>
-
-          {this.state.current.map((items, index) =>
-            <img key={index} src={this.state.possibilities[items].picture}></img>
-          )}
-        </div>
-        <div>
-          <div>
-            Tap on image to guess
-          </div>
-          {this.state.possibilities.map((items, index) =>
-            <div className="item-bar">
-              <div>
-                <img src={items.picture}
-                  key={index}
-                  onClick={() => this.play(index)}></img>
-              </div>
-              <label>
-                {items.name}
-              </label >
-            </div>
-          )}
-        </div>
-
-        <div>
-          <button onClick={() => this.clear()}>clear</button>
-          <button onClick={() => this.checkAnswer(this.state.current)}>submit</button>
-        </div>
-
-        <div>
-          <div>
-            Correct Items:
-            {this.state.correctNum}
-          </div>
-          <div>
-            Correct position:
-            {this.state.correctPos}
-          </div>
-        </div>
-
-        <div>
-          {this.state.guesses.map((items, index) =>
             <div>
-              <div>
-                {items.correct_num}
-                {items.correct_pos}
+              Current guess
+          </div>
+
+            {this.state.current.map((items, index) =>
+              <img key={index} src={this.state.possibilities[items].picture}></img>
+            )}
+          </div>
+          <div>
+            <div>
+              Tap on image to guess
+          </div>
+            {this.state.possibilities.map((items, index) =>
+              <div className="item-bar">
+                <div>
+                  <img src={items.picture}
+                    key={index}
+                    onClick={() => this.play(index)}></img>
+                </div>
+                <label>
+                  {items.name}
+                </label >
               </div>
-              <div>
-                {this.state.guesses[index].pictures.map((pics, index) =>
-                  <img src={this.state.possibilities[pics].picture}></img>)}
-              </div>
+            )}
+          </div>
+
+          <div>
+            <button onClick={() => this.clear()}>clear</button>
+            <button onClick={() => this.checkAnswer(this.state.current)}>submit</button>
+          </div>
+
+          <div>
+            <div>
+              Correct Items:
+            {this.state.correctNum}
             </div>
-          )}
+            <div>
+              Correct position:
+            {this.state.correctPos}
+            </div>
+          </div>
+
+          <div>
+            {this.state.guesses.map((items, index) =>
+              <div>
+                <div>
+                  {items.correct_num}
+                  {items.correct_pos}
+                </div>
+                <div>
+                  {this.state.guesses[index].pictures.map((pics, index) =>
+                    <img src={this.state.possibilities[pics].picture}></img>)}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+
+
+
+        <div className="bottom-container-div">
+          bottom div
+        </div>
+
+
       </div>
     );
   }
