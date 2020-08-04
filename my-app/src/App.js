@@ -11,6 +11,7 @@ class App extends Component {
 
   state = {
     turn: 0,
+    maxTurns: [],
     possibilities: [{
       picture: BKnife,
       name: "B-Knife"
