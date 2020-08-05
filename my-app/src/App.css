@@ -46,6 +46,7 @@
 
 .top-container-div {
   display: flex;
+  justify-content: space-evenly;
   background-color: beige;
 }
 
@@ -56,4 +57,5 @@
 .item-bar {
   float: left;
   width: 5rem;
+
 }
