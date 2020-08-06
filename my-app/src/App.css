@@ -57,5 +57,17 @@
 .item-bar {
   float: left;
   width: 5rem;
+  
+}
 
+.guess-container{
+  height: 600px;
+  background-color: brown;
+  display: flex;
+  width: 300px;
+}
+
+.guess-div{
+  height: 200px;
+  width: 600px;
 }

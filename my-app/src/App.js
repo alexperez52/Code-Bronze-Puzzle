@@ -49,12 +49,7 @@ class App extends Component {
 
 
   play(e) {
-    /*
-    Make random guess
-    Get feedback e.g (2 0)
-    Filter possible results
-    Choose the one that yields best results
-  */
+
     if (this.state.current.length < 3 && !this.state.current.includes(e)) {
       this.setState({ current: [...this.state.current, e] })
     }
@@ -106,38 +101,40 @@ class App extends Component {
     return (
       <div className="container-div">
 
-
-
         <div className="top-container-div">
 
-
-
           <div className="left-div">
-            <div>
+            <div className="guess-div">
               <div>
-                Current guess
+                <div>
+                  Current guess
             </div>
 
-              {this.state.current.map((items, index) =>
-                <img key={index} src={this.state.possibilities[items].picture}></img>
+                {this.state.current.map((items, index) =>
+                  <div className="item-bar">
+                    <img key={index} src={this.state.possibilities[items].picture}></img>
+                  </div>
+                )}
+              </div>
+            </div>
+
+
+
+            <div className="guess-container">
+
+              {this.state.guesses.map((items, index) =>
+                <div>
+                  <div>
+                    {items.correct_num}
+                    {items.correct_pos}
+                  </div>
+                  <div>
+                    {this.state.guesses[index].pictures.map((pics, index) =>
+                      <img src={this.state.possibilities[pics].picture}></img>)}
+                  </div>
+                </div>
               )}
             </div>
-
-
-
-            {this.state.guesses.map((items, index) =>
-              <div>
-                <div>
-                  {items.correct_num}
-                  {items.correct_pos}
-                </div>
-                <div>
-                  {this.state.guesses[index].pictures.map((pics, index) =>
-                    <img src={this.state.possibilities[pics].picture}></img>)}
-                </div>
-              </div>
-            )}
-
 
 
 
@@ -177,6 +174,7 @@ class App extends Component {
 
             {this.state.possibilities.map((items, index) =>
               <div className="item-bar">
+
                 <div>
                   <img src={items.picture}
                     key={index}
