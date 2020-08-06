@@ -120,21 +120,19 @@ class App extends Component {
 
 
 
-            <div className="guess-container">
 
-              {this.state.guesses.map((items, index) =>
+            {this.state.guesses.map((items, index) =>
+              <div>
                 <div>
-                  <div>
-                    {items.correct_num}
-                    {items.correct_pos}
-                  </div>
-                  <div>
-                    {this.state.guesses[index].pictures.map((pics, index) =>
-                      <img src={this.state.possibilities[pics].picture}></img>)}
-                  </div>
+                  {items.correct_num}
+                  {items.correct_pos}
                 </div>
-              )}
-            </div>
+                <div>
+                  {this.state.guesses[index].pictures.map((pics, index) =>
+                    <img src={this.state.possibilities[pics].picture}></img>)}
+                </div>
+              </div>
+            )}
 
 
 
