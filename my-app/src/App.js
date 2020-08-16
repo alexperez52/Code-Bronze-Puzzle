@@ -67,7 +67,8 @@ class App extends Component {
       }
       await this.setState({ computer: arr });
     }
-
+    /*Limit should be six
+    */
 
     const computer_comb = this.state.computer;
     var cn = 0;
